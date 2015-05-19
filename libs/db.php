@@ -14,12 +14,13 @@ class DB {
     private $error;
     private $stmt;
 
-    public function __construct($dbServer, $dbHost, $dbName, $dbUsername, $dbPassword) {
+    public function __construct() {
         $dbServer = DB_SERVER;
         $dbHost = DB_HOST;
         $dbName = DB_NAME;
         $dbUsername = DB_USERNAME;
         $dbPassword = DB_PASSWORD;
+
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
