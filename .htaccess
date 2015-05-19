@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteRule ^p/(.*)$ product.php?id=$1
+RewriteRule ^c/(.*)$ category.php?id=$1
+RewriteRule ^a/(.*)$ author.php?id=$1
+RewriteRule ^s/(.*)$ search.php?query=$1 [L,QSA]
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
