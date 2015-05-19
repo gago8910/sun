@@ -4,6 +4,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+session_start();
+if (isset($_SESSION['username']))
+    header ('Location: ../index.php');
 
 require_once '../libs/db.php';
 if (isset($_POST['login'])) {
@@ -18,7 +21,8 @@ if (isset($_POST['login'])) {
     $row = $db->single();
 
     if ($row) {
-        echo 'Đăng nhập thành công';
+        $_SESSION['username'] = $username;
+        header('Location: product.php');
     } else {
         echo 'Đăng nhập thất bại';
     }
