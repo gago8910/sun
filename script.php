@@ -1,7 +1,6 @@
 <?php
 
-$string = '<ul class="dropdown-menu" role="menu">
-    <li><a href="#">All</a></li>
+$string = '<li><a href="#">All</a></li>
     <li><a href="#">Best Sellers</a></li>
     <li><a href="http://www.sunfrogshirts.com/Automotive/" data-cid="52">Automotive</a></li>
     <li><a href="http://www.sunfrogshirts.com/Camping/" data-cid="51">Camping</a></li>
@@ -21,8 +20,7 @@ $string = '<ul class="dropdown-menu" role="menu">
     <li><a href="http://www.sunfrogshirts.com/Sports/" data-cid="27">Sports</a></li>
     <li><a href="http://www.sunfrogshirts.com/TV Shows/" data-cid="34">TV Shows</a></li>
     <li><a href="http://www.sunfrogshirts.com/Video Games/" data-cid="13">Video Games</a></li>
-    <li><a href="http://www.sunfrogshirts.com/Zombies/" data-cid="11">Zombies</a></li>
-</ul>';
+    <li><a href="http://www.sunfrogshirts.com/Zombies/" data-cid="11">Zombies</a></li>';
 
 $document = new DOMDocument();
 $document->loadHTML($string);
@@ -34,7 +32,7 @@ $as = $document->getElementsByTagName('a');
 $result = array();
 for($i=0;$i<($as->length-1); $i++) {
     $result[]['content']=$as->item($i)->textContent;
-    $result[]['link'] = $as->item($i)->getAttribute( 'href');
+    $result[]['link'] = $as->item($i)->getAttribute('href');
 }
 
 // echo implode(' ', $result);  
