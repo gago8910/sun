@@ -12,6 +12,7 @@ function get_center($data, $first, $last) {
 
 function cat($siteurl) {
     $html = file_get_contents($siteurl);
+//    $cut = get_center($html, '<li class="title">Categories</li>', '</ul>');
     $cut = get_center($html, '<li class="title">Categories</li>', '</ul>');
     $epl = explode('</a>', $cut);
     for ($i = 0; $i < count($epl) - 1; $i++) {

@@ -1,14 +1,15 @@
 <?php
 include('functions.php');
 $html = file_get_contents($siteurl);
-//var_dump($cat);
+//$html = file_get_contents($siteurl . '/search/index.cfm?SEARCH=diabetes');
 $epl = explode('<form name="sendtocollection" method="post" action="/AddtoGo.cfm">', $html);
 for ($i = 1; $i < count($epl); $i++) {
     //echo $i.$epl[$i];
     $item[$i - 1]['pic'] = get_center($epl[$i], 'data-original="', '"');
     $item[$i - 1]['title'] = get_center($epl[$i], 'title="', '"');
-    $item[$i - 1]['link'] = get_center($epl[$i], '<center><a href="', '"');
-    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
+    $item[$i - 1]['link'] = get_center($epl[$i], '<a href="', '"');
+    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<strong>', '</strong>'));
+//    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
 }
 //print_r($item);
 ?>
@@ -110,6 +111,7 @@ for ($i = 1; $i < count($epl); $i++) {
                 <div class="col-md-10">
                     <?php
                     for ($i = 0; $i < count($item); $i++)
+//                        var_dump($item[0]);die;
                         echo '<div class="col-md-3 column productbox">
     <a href="/p' . $item[$i]['link'] . '"><img src="' . $item[$i]['pic'] . '" class="img-rounded" alt="' . $item[$i]['title'] . '" style="max-height:200px;"></a>
     <div class="producttitle truncate">' . $item[$i]['title'] . '</div>
