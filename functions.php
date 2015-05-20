@@ -13,13 +13,17 @@ function get_center($data, $first, $last) {
 function cat($siteurl) {
     $html = file_get_contents($siteurl);
 //    $cut = get_center($html, '<li class="title">Categories</li>', '</ul>');
-    $cut = get_center($html, '<li class="title">Categories</li>', '</ul>');
+    $cut = get_center($html, '<ul class="dropdown-menu" role="menu">', '</ul>');
     $epl = explode('</a>', $cut);
-    for ($i = 0; $i < count($epl) - 1; $i++) {
-        preg_match('/">[a-zA-Z0-9].+<\/li>/', $epl[$i], $regex);
-        $cat[$i]['name'] = get_center($regex[0], '">', '</li>');
-        $cat[$i]['link'] = str_replace("&", "and", get_center($epl[$i], '<a href="', '/"'));
-        $cat[$i]['title'] = get_center($epl[$i], 'title="', '">');
+    $document = new DOMDocument();
+    $document->loadHTML($cut);
+    $as = $document->getElementsByTagName('a');
+    for($i=0;$i<($as->length-1); $i++) {
+        $cat[$i]['name']=$as->item($i)->textContent;
+        $cat[$i]['title']=$as->item($i)->textContent;
+        $text = $as->item($i)->getAttribute('href');
+        $link = str_split($text, 28);
+        $cat[$i]['link'] = $link[1];
     }
     for ($i = 1; $i < count($cat); $i++)
         echo '<li class="list-group-item"><a href="/c' . $cat[$i]['link'] . '" title="' . $cat[$i]['title'] . '">' . $cat[$i]['name'] . '</a></li>';
