@@ -9,7 +9,8 @@ for ($i = 1; $i < count($epl); $i++) {
     $item[$i - 1]['pic'] = get_center($epl[$i], 'data-original="', '"');
     $item[$i - 1]['title'] = get_center($epl[$i], 'title="', '"');
     $item[$i - 1]['link'] = get_center($epl[$i], '<a href="', '"');
-    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
+    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<strong>', '</strong>'));
+    //$item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
 }
 ?>
 <html lang="en">

@@ -2,7 +2,6 @@
 include('functions.php');
 $id = $_GET['id'];
 $html = file_get_contents($siteurl . '/' . str_replace("_", "/", $id));
-var_dump($html); die;
 $pic = get_center($html, '<link rel="image_src" href="', '" / >');
 $title = get_center($html, '<h1 style="margin-left:15px;">', '</h1>');
 $author = get_center($html, '<span style="color:#06F; ">', '</span>');
