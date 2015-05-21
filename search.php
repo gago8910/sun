@@ -17,7 +17,8 @@ for ($i = 1; $i < count($epl); $i++) {
         $item[$i - 1]['cat'] = 'No Category';
     preg_match('/[a-zA-Z0-9-\[\]]{1,100}.html/', get_center($epl[$i], '<a href="', '"'), $regex);
     $item[$i - 1]['link'] = $regex[0];
-    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
+//    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
+    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<strong>', '</strong>'));
 }
 ?>
 <html lang="en">
