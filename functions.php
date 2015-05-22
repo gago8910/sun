@@ -2,6 +2,7 @@
 
 error_reporting(0);
 $siteurl = 'http://www.sunfrogshirts.com';
+$affiliate_id = 39166;
 include('alias.php');
 
 function get_center($data, $first, $last) {

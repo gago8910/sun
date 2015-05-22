@@ -1,9 +1,5 @@
 <?php
 include('functions.php');
-//var_dump($_SERVER['SERVER_NAME']);die;
-//if (array_key_exists($_SERVER['SERVER_NAME'], $alias)) {
-//    echo "Got Irix";
-//}
 if($_SERVER['SERVER_NAME'] == 'diabetesshirt.ga') {
     $html = file_get_contents($siteurl . '/search/index.cfm?SEARCH=diabetes');
     $link_sunfrog = '';
@@ -119,9 +115,9 @@ for ($i = 1; $i < count($epl); $i++) {
                     <?php
                     for ($i = 0; $i < count($item); $i++)
                         echo '<div class="col-md-3 column productbox">
-    <a href="'.$link_sunfrog . $item[$i]['link'] . '?39166"><img src="' . $item[$i]['pic'] . '" class="img-rounded" alt="' . $item[$i]['title'] . '" style="max-height:200px;"></a>
+    <a href="'.$link_sunfrog . $item[$i]['link'] . '?'.$affiliate_id.'"><img src="' . $item[$i]['pic'] . '" class="img-rounded" alt="' . $item[$i]['title'] . '" style="max-height:200px;"></a>
     <div class="producttitle truncate">' . $item[$i]['title'] . '</div>
-    <div class="productprice"><div class="pull-right"><a href="'.$link_sunfrog . $item[$i]['link'] . '?39166" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">' . $item[$i]['price'] . '</div></div>
+    <div class="productprice"><div class="pull-right"><a href="'.$link_sunfrog . $item[$i]['link'] . '?'.$affiliate_id.'" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">' . $item[$i]['price'] . '</div></div>
 </div>';
                     ?>
                 </div>
