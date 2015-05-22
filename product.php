@@ -26,7 +26,34 @@ for ($i = 1; $i < count($epl); $i++) {
     if (strpos($epl[$i], 'Indicate'))
         $type[$i]['active'] = 'yes';
 }
+
 $cut = get_center($html, '<h4>You May Also Like These:</h4>', '<br style="clear:both;" />');
+
+//
+//$cut = get_center($html, '<h4>You might also like</h4>', '<div class="visible-xs" style="height:130px;"><div class="clearfix"></div></div>');
+//$new_data = explode('<div class="slide">', $cut);
+//unset($new_data[0]);
+//for ($i = 0; $i < count($new_data) - 1; $i++) {
+//    $also[$i]['link'] = get_center($new_data[$i], '<a href="', '"');
+//    $also[$i]['pic'] = get_center($new_data[$i], "background:url('", "')");
+//    $also[$i]['title'] = get_center($new_data[$i], 'title="', '"');
+//}
+//var_dump($also);die;
+//$document = new DOMDocument();
+//$document->loadHTML($cut);
+//$as = $document->getElementsByTagName('a');
+//var_dump($as->item(3)->textContent);
+//var_dump($as->item(3)->getAttribute('href'));die;
+//for($i=0;$i<($as->length-1); $i++) {
+//    $sonha[$i]['name']=$as->item($i)->textContent;
+//    $sonha[$i]['title']=$as->item($i)->textContent;
+//    $text = $as->item($i)->getAttribute('href');
+//    $link = str_split($text, 28);
+//    $sonha[$i]['link'] = $link[1];
+//}
+
+//var_dump($sonha);die;
+
 $epl = explode('</div></a>', $cut);
 for ($i = 0; $i < count($epl) - 1; $i++) {
     $also[$i]['link'] = get_center($epl[$i], '<a href="', '"');
@@ -168,12 +195,12 @@ for ($i = 0; $i < count($epl) - 1; $i++) {
                                         echo '<option value="">' . get_center($price[0][$i], '">', '</') . '</option>';
                                     ?>
                                 </select>
-                                <?php echo '<br /><a href="' . $siteurl . '/' . $id . '?40387" rel="nofollow" target="_blank" class="btn btn-info" role="button" style="display: block; width: 100%;">Buy Now</a>'; ?>
+                                <?php echo '<br /><a href="' . $siteurl . '/' . $id . '?'.$affiliate_id.'" rel="nofollow" target="_blank" class="btn btn-info" role="button" style="display: block; width: 100%;">Buy Now</a>'; ?>
                             </div>
 
                             <h3>YOU MAY ALSO LIKE THESE</h3>
                             <div class="row" style="text-align: center;">
-                                <?php
+<!--                                --><?php
                                 foreach ($alias as $key => $value) {
                                 $domain[]=$key; // lay domain
                                 }
