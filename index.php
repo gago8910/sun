@@ -1,17 +1,24 @@
 <?php
 include('functions.php');
-$html = file_get_contents($siteurl);
-//$html = file_get_contents($siteurl . '/search/index.cfm?SEARCH=diabetes');
+//var_dump($_SERVER['SERVER_NAME']);die;
+//if (array_key_exists($_SERVER['SERVER_NAME'], $alias)) {
+//    echo "Got Irix";
+//}
+if($_SERVER['SERVER_NAME'] == 'diabetesshirt.ga') {
+    $html = file_get_contents($siteurl . '/search/index.cfm?SEARCH=diabetes');
+    $link_sunfrog = '';
+} else {
+    $html = file_get_contents($siteurl);
+    $link_sunfrog = '/p';
+}
 $epl = explode('<form name="sendtocollection" method="post" action="/AddtoGo.cfm">', $html);
 for ($i = 1; $i < count($epl); $i++) {
-    //echo $i.$epl[$i];
     $item[$i - 1]['pic'] = get_center($epl[$i], 'data-original="', '"');
     $item[$i - 1]['title'] = get_center($epl[$i], 'title="', '"');
     $item[$i - 1]['link'] = get_center($epl[$i], '<a href="', '"');
     $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<strong>', '</strong>'));
 //    $item[$i - 1]['price'] = preg_replace('/\s+/', '', get_center($epl[$i], '<td valign="top" align="right" class="product-price">', '</td>'));
 }
-//print_r($item);
 ?>
 <html lang="en">
     <head>
@@ -111,11 +118,10 @@ for ($i = 1; $i < count($epl); $i++) {
                 <div class="col-md-10">
                     <?php
                     for ($i = 0; $i < count($item); $i++)
-//                        var_dump($item[0]);die;
                         echo '<div class="col-md-3 column productbox">
-    <a href="/p' . $item[$i]['link'] . '"><img src="' . $item[$i]['pic'] . '" class="img-rounded" alt="' . $item[$i]['title'] . '" style="max-height:200px;"></a>
+    <a href="'.$link_sunfrog . $item[$i]['link'] . '?39166"><img src="' . $item[$i]['pic'] . '" class="img-rounded" alt="' . $item[$i]['title'] . '" style="max-height:200px;"></a>
     <div class="producttitle truncate">' . $item[$i]['title'] . '</div>
-    <div class="productprice"><div class="pull-right"><a href="/p' . $item[$i]['link'] . '" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">' . $item[$i]['price'] . '</div></div>
+    <div class="productprice"><div class="pull-right"><a href="'.$link_sunfrog . $item[$i]['link'] . '?39166" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">' . $item[$i]['price'] . '</div></div>
 </div>';
                     ?>
                 </div>
