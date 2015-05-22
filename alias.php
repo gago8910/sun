@@ -1,8 +1,8 @@
 <?php
 
 $alias = array(
-    "teeshirt.ga" => "flatly",
-    "cheaptshirts.ga" => "united",
-    "coolshirt.ga" => "cosmo",
+    "nurseshirt.ga" => "flatly",
+    "diabetesshirt.ga" => "united",
+    "cooltshirt.ga" => "cosmo",
 );
 ?>
