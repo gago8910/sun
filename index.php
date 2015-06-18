@@ -29,7 +29,7 @@ for ($i = 1; $i < count($epl); $i++) {
               <meta property="og:site_name" content="<? echo strtoupper($_SERVER['SERVER_NAME']);?>"/>
         <meta property="fb:admins" content="tuongthenao" />
         <meta property="og:description" content="Shop t-shirts <? echo strtoupper($_SERVER['SERVER_NAME']);?>. Choose from over 2,000,000 unique tees. Large selection of shirt styles. Satisfaction guaranteed."/>
-
+        <meta name="p:domain_verify" content="f7237a358ba081ec3135fb0b45ba9278"/>
         <!-- Latest compiled and minified CSS -->
         <title><?php echo strtoupper($_SERVER['SERVER_NAME']); ?> The Best T Shirts</title>
         <meta name="description" content="TShop t-shirts <? echo strtoupper($_SERVER['SERVER_NAME']);?>. Choose from over 2,000,000 unique tees. Large selection of shirt styles. Satisfaction guaranteed.">
